@@ -4,7 +4,7 @@ Course project for **CSC3050: Computer Architecture** at The Chinese University 
 
 This program is a MIPS assembler. It reads a `.asm` file, translates each instruction in the `.text` segment into 32-bit binary machine code, and writes the result to a `.txt` file. It does not execute the instructions. It only performs the assembly step: assembly language to machine code.
 
-## What it models
+## 1. What it models
 
 A CPU cannot read text such as `add $t0, $t1, $t2` directly. The assembler splits each instruction into fixed fields and packs them into a 32-bit word. Basic MIPS instructions use three formats. This project does not require pseudo-instructions or coprocessor instructions.
 
@@ -46,7 +46,7 @@ Conventions used by this assembler:
 - The `.data` segment is not assembled. Static data is left for a later simulator to load into memory. This program only records each item as name, type, and contents.
 - Every `syscall` encodes as `00000000000000000000000000001100`. The specific call is selected by `$v0` at execution time, so the assembler does not distinguish them.
 
-## How the program works
+## 2. How the program works
 
 The assembler scans the source twice:
 
@@ -63,7 +63,7 @@ The assembler scans the source twice:
 | `testfile.asm`, `testfile2.asm`, `testfile3.asm` | Sample inputs |
 | `expectedoutput.txt`, `expectedoutput2.txt`, `expectedoutput3.txt` | Expected machine code for those inputs |
 
-## How to run
+## 3. How to run
 
 Python 3 is required. There are no third-party dependencies. From the repository root:
 
@@ -89,9 +89,9 @@ On a mismatch it prints the line number, the expected bits, and the actual bits.
 
 The output is plain text: 32 `0`/`1` characters per instruction, with `\r\n` at the end of each line.
 
-## Examples
+## 4. Examples
 
-### 1. Loads and stores (`testfile.asm`)
+### 4.1. Loads and stores (`testfile.asm`)
 
 The input is a series of load and store instructions. Immediates may be positive or negative, and the base register is written in parentheses:
 
@@ -128,7 +128,7 @@ sb  $t0, -11560($gp)
 10100011100010001101001011011000
 ```
 
-### 2. Labels, branches, and jumps (`testfile2.asm`)
+### 4.2. Labels, branches, and jumps (`testfile2.asm`)
 
 This sample is a recursive Fibonacci routine. `fibonacci` and `fibonacciExit` are labels. `jal` jumps back to the function entry, and `jr $ra` takes the return address from a register:
 
@@ -165,7 +165,7 @@ jr $ra
 
 `bne $t7, $zero, fibonacciExit` does not store an absolute address. It stores an offset relative to the next instruction. The full machine code is in `expectedoutput2.txt`: 19 lines, one per instruction in `.text`. The two labels do not occupy a line.
 
-### 3. `.data` is skipped (`testfile3.asm`)
+### 4.3. `.data` is skipped (`testfile3.asm`)
 
 The file starts with static data. The assembler does not turn that data into machine code:
 
@@ -182,7 +182,7 @@ __builtin_memcpy_aligned_large:
 
 Blank lines, full-line comments, and trailing `# ...` comments are discarded as well. A label on its own line is treated the same as a label written on the instruction line. This memcpy fragment produces 41 lines of machine code, listed in `expectedoutput3.txt`.
 
-## Supported instructions
+## 5. Supported instructions
 
 R-type: `add` `addu` `and` `div` `divu` `jalr` `jr` `mfhi` `mflo` `mthi` `mtlo` `mult` `multu` `nor` `or` `sll` `sllv` `slt` `sltu` `sra` `srav` `srl` `srlv` `sub` `subu` `syscall` `xor`
 
