@@ -1,6 +1,6 @@
 # MIPS Assembler
 
-Course project for **CSC3050: Computer Architecture** at The Chinese University of Hong Kong, Shenzhen.
+Course project for **CSC3050: Computer Architecture, Spring 2022** at The Chinese University of Hong Kong, Shenzhen. 
 
 This program is a MIPS assembler. It reads a `.asm` file, translates each instruction in the `.text` segment into 32-bit binary machine code, and writes the result to a `.txt` file. It does not execute the instructions. It only performs the assembly step: assembly language to machine code.
 
