@@ -1,12 +1,12 @@
 # MIPS Assembler
 
-Course project for **CSC3050: Computer Architecture, Spring 2022** at The Chinese University of Hong Kong, Shenzhen. 
+Course project for **CSC3050: Computer Architecture, Spring 2022** at The Chinese University of Hong Kong, Shenzhen. The full project requirement and project report are in [docs/CSC3050 Assignment 1 Description.pdf](docs/CSC3050%20Assignment%201%20Description.pdf) and [docs/Assignment_1_120090874.pdf](docs/Assignment_1_120090874.pdf), respectively.
 
 This program is a MIPS assembler. It reads a `.asm` file, translates each instruction in the `.text` segment into 32-bit binary machine code, and writes the result to a `.txt` file. It does not execute the instructions. It only performs the assembly step: assembly language to machine code.
 
 ## 1. What it models
 
-A CPU cannot read text such as `add $t0, $t1, $t2` directly. The assembler splits each instruction into fixed fields and packs them into a 32-bit word. Basic MIPS instructions use three formats. This project does not require pseudo-instructions or coprocessor instructions.
+A CPU cannot read text such as `add $t0, $t1, $t2` directly. The assembler splits each instruction into fixed fields and packs them into a 32-bit word. Basic MIPS instructions use three formats; the full list of MIPS instructions implemented in this project is in the appendix [docs/MIPS Instruction List.pdf](docs/MIPS%20Instruction%20List.pdf). This project does not require pseudo-instructions or coprocessor instructions.
 
 | Type | Layout | Typical instructions |
 | --- | --- | --- |
@@ -194,5 +194,6 @@ Input may contain leading or trailing whitespace, spaces or tabs between fields,
 
 ## References
 
-- Assignment handout: CSC3050 Assignment 1 (MIPS assembler). The text segment starts at `0x400000`, and only `.text` is assembled.
-- Instruction encodings: MIPS Instruction Coding (R / I / J fields, opcodes, and funct codes). Pseudo-instructions, coprocessor instructions, and `break` are not required.
+- [CSC3050 Assignment 1 Description.pdf](docs/CSC3050%20Assignment%201%20Description.pdf) — full project requirement (MIPS assembler). The text segment starts at `0x400000`, and only `.text` is assembled.
+- [Assignment_1_120090874.pdf](docs/Assignment_1_120090874.pdf) — project report for this implementation.
+- [MIPS Instruction List.pdf](docs/MIPS%20Instruction%20List.pdf) — appendix listing the MIPS instructions implemented in this project (R / I / J encodings, opcodes, and funct codes). Pseudo-instructions, coprocessor instructions, and `break` are not required.
